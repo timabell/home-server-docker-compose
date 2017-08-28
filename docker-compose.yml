@@ -1,0 +1,14 @@
+version: '2.1'
+services:
+  bt:
+    image: linuxserver/transmission
+    environment:
+      TZ: "Europe/London"
+    ports:
+      - "9091:9091"
+      - "51413:51413"
+      - "51413:51413/udp"
+    volumes:
+      - /var/transmission/config/:/config
+      - /var/transmission/downloads/:/downloads
+      - /var/transmission/watch/:/watch
