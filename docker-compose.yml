@@ -12,3 +12,12 @@ services:
       - /var/transmission/config/:/config
       - /var/transmission/downloads/:/downloads
       - /var/transmission/watch/:/watch
+  st:
+    image: linuxserver/syncthing
+    ports:
+      - "8384:8384"
+      - "22000:22000"
+      - "21027:21027/udp"
+    volumes:
+      - /var/syncthing/config/:/config
+      - /var/syncthing/data/:/data
