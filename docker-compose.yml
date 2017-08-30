@@ -21,3 +21,12 @@ services:
     volumes:
       - /var/syncthing/config/:/config
       - /var/syncthing/data/:/data
+  st2:
+    image: linuxserver/syncthing
+    ports:
+      - "8385:8384"
+      - "22001:22000"
+      - "21028:21027/udp"
+    volumes:
+      - /var/syncthing2/config/:/config
+      - /var/syncthing2/data/:/data
