@@ -1,6 +1,5 @@
 version: '2.1'
-# reminders:
-# ports - "host:container" where container is the port inside the container and host is the exposed port
+# ports - "host:container" i.e. published:internal
 services:
   bt:
     image: linuxserver/transmission
@@ -37,4 +36,4 @@ services:
     environment:
       TZ: "Europe/London"
     ports:
-      - "80:8888"
+      - "8888:80"
