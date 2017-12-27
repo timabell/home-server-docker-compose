@@ -1,4 +1,6 @@
 version: '2.1'
+# reminders:
+# ports - "host:container" where container is the port inside the container and host is the exposed port
 services:
   bt:
     image: linuxserver/transmission
@@ -30,3 +32,9 @@ services:
     volumes:
       - /var/syncthing2/config/:/config
       - /var/syncthing2/data/:/data
+  zm:
+    image: quantumobject/docker-zoneminder
+    environment:
+      TZ: "Europe/London"
+    ports:
+      - "80:8888"
