@@ -1,5 +1,6 @@
 version: '2.1'
-# ports - "host:container" i.e. published:internal
+# reminders:
+# ports - "host:container" where container is the port inside the container and host is the exposed port
 services:
   bt:
     image: linuxserver/transmission
@@ -31,9 +32,17 @@ services:
     volumes:
       - /var/syncthing2/config/:/config
       - /var/syncthing2/data/:/data
+# failed with Can't create missing temporary directory '/var/run/zm': Permission denied
+#image: quantumobject/docker-zoneminder
   zm:
-    image: quantumobject/docker-zoneminder
+    image: dlandon/zoneminder
     environment:
       TZ: "Europe/London"
+      PUID: "99"
+      PGID: "100"
+      SHMEM: "50%"
     ports:
       - "8888:80"
+    volumes:
+      - /var/zm/config:/config
+      - /var/zm/data:/var/cache/zoneminder
